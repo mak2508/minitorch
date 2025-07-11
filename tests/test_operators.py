@@ -99,16 +99,18 @@ def test_eq(a: float) -> None:
 
 
 @pytest.mark.task0_2
-@given(small_floats)
-def test_sigmoid(a: float) -> None:
+@given(small_floats, small_floats)
+def test_sigmoid(a: float, b: float) -> None:
     """Check properties of the sigmoid function, specifically
     * It is always between 0.0 and 1.0.
     * one minus sigmoid is the same as sigmoid of the negative
     * It crosses 0 at 0.5
-    * It is  strictly increasing.
+    * It is strictly increasing.
     """
-    # TODO: Implement for Task 0.2.
-    raise NotImplementedError('Need to implement for Task 0.2')
+    assert 0.0 < sigmoid(a) <= 1.0
+    assert_close(1 - sigmoid(a), sigmoid(-a))
+    assert sigmoid(0) == 0.5
+    assert sigmoid(a + abs(b)) >= sigmoid(a) 
 
 
 @pytest.mark.task0_2
